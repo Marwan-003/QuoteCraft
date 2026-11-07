@@ -111,10 +111,14 @@ describe("loadQuote", () => {
     expect(loadQuote(storage)).toBeNull();
   });
 
-  it.each([
-    ["landing2" as const, "a non-null invalid project type"],
-    [42 as const, "a non-string invalid project type"],
-  ])("returns null for %p as projectType (%s)", (projectType, _label) => {
+  it.each<
+    ["landing2", "a non-null invalid project type"] | [42, "a non-string invalid project type"]
+  >([
+    ["landing2", "a non-null invalid project type"],
+    [42, "a non-string invalid project type"],
+  /* eslint-disable @typescript-eslint/no-unused-vars -- vitest it.each passes tuple elements as separate args */
+])("returns null for %p as projectType (%s)", (projectType, _label) => {
+/* eslint-enable @typescript-eslint/no-unused-vars */
     const storage = memoryStorage({ [KEY]: JSON.stringify(stored({ projectType })) });
     expect(loadQuote(storage)).toBeNull();
   });

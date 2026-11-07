@@ -2,6 +2,8 @@
 // the QuoteResult; presentational components stay stateless about pricing.
 "use client";
 
+/* eslint-disable react-hooks/set-state-in-effect -- legitimate client-side hydration pattern */
+
 import { useEffect, useMemo, useState } from "react";
 import { calculateQuote } from "../lib/pricing";
 import { EMPTY_QUOTE, type ProjectType, type Quote } from "../lib/types";

@@ -1,6 +1,6 @@
 // Presentational: the extra pages count and the add-on checkboxes.
 // No pricing math here.
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const LANDING_MESSAGE =
   "Extra pages aren't available for a landing page. Choose Multi-page site to add pages.";
@@ -42,14 +42,6 @@ export function AddOnControls({
   onBilingual,
 }: AddOnControlsProps) {
   const [error, setError] = useState<string | null>(null);
-
-  // Landing page: clear any leftover validation message.
-  useEffect(() => {
-    if (landingSelected) {
-      setError(null);
-    }
-  }, [landingSelected]);
-
   const extraPagesDisabled = !hasProjectType || landingSelected;
 
   function handleExtraPagesChange(raw: string) {

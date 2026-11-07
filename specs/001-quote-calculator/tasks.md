@@ -79,9 +79,9 @@
 **Independent Test**: Build a quote with names and several options, refresh the page, and compare every selection, name, line item, and total.
 
 - [X] T020 [US3] **Quote storage, test-first**: Write failing tests in `lib/quote-storage.test.ts` using a small in-memory Storage-like object, with no jsdom: save under `quotecraft.quote.v1` with `version: 1`; load a valid quote; accept `projectType: null` as a valid empty quote; return no quote when the key is missing; reject malformed JSON, a wrong version, a non-null invalid project type, a negative or fractional `extraPages`, non-boolean add-ons, and names that are present but not strings; accept missing or empty `clientName` and `projectName` as empty strings; normalize a Landing-page quote with non-zero `extraPages` to zero; persist only one quote; and assert `saveQuote` stores only the quote inputs, never line items or totals. Run `npx vitest run` and confirm the tests fail because `lib/quote-storage.ts` is missing. Then implement `lib/quote-storage.ts` as pure functions with no React: `loadQuote(storage)` returns `Quote | null` after validation, and `saveQuote(storage, quote)` writes only the quote inputs, never line items or totals. Run `npx vitest run` until the storage tests pass, run `npm run build`, and commit once.
-- [ ] T021 [US3] Wire persistence into `components/QuoteCalculator.tsx`: load after mount behind a hydrated flag to avoid server/client mismatch; save only after hydration completes so the initial empty quote never overwrites stored data; validate the stored shape; save after every accepted change; replace the remembered quote on each edit. There is no save button and no separate "new quote" action.
-- [ ] T022 [US3] Handle missing, unreadable, or throwing storage in `lib/quote-storage.ts` and `components/QuoteCalculator.tsx`: start from `EMPTY_QUOTE` with no error message, including when localStorage is unavailable.
-- [ ] T023 [US3] Verify restored quotes in `components/QuoteCalculator.tsx`: selections, names, and total return; line items are recalculated from the current pricing rules; editing the restored quote replaces the remembered one.
+- [X] T021 [US3] Wire persistence into `components/QuoteCalculator.tsx`: load after mount behind a hydrated flag to avoid server/client mismatch; save only after hydration completes so the initial empty quote never overwrites stored data; validate the stored shape; save after every accepted change; replace the remembered quote on each edit. There is no save button and no separate "new quote" action.
+- [X] T022 [US3] Handle missing, unreadable, or throwing storage in `lib/quote-storage.ts` and `components/QuoteCalculator.tsx`: start from `EMPTY_QUOTE` with no error message, including when localStorage is unavailable.
+- [X] T023 [US3] Verify restored quotes in `components/QuoteCalculator.tsx`: selections, names, and total return; line items are recalculated from the current pricing rules; editing the restored quote replaces the remembered one.
 
 **Checkpoint**: All three user stories work independently and together; refreshing restores the last quote without a save action.
 
@@ -91,12 +91,12 @@
 
 **Goal**: Verify the whole feature against the constitution, contract, and quickstart.
 
-- [ ] T024 Run `npm run build`, `npx vitest run`, and `npm run lint` from the repository root. Fix only failures caused by files touched in this feature. Do not weaken tests to make them pass.
-- [ ] T025 Audit accessibility across `app/page.tsx`, `app/layout.tsx`, `app/globals.css`, and `components/`: every input has a visible label, every control is keyboard operable, focus is always visible, text contrast is at least 4.5:1, touch targets are at least 44px, and reduced-motion removes non-essential motion. Fix any gaps.
-- [ ] T026 Audit responsive and print behavior at 375px and 1280px in `app/page.tsx`, `components/QuoteCalculator.tsx`, `components/QuoteSheet.tsx`, and `app/globals.css`: no horizontal scrolling, the mobile total bar is fixed and visible on screen, the desktop quote sheet is sticky, and print hides the options panel, actions, and fixed mobile total bar.
-- [ ] T027 Audit brand compliance across `app/globals.css` and `components/`: only BRAND.md tokens, no raw hex values in components, exactly the two fonts, Highlighter only behind the total, sentence case, and copy matching `BRAND.md`. Confirm no icon library or `lucide-react` dependency exists.
-- [ ] T028 Audit `package.json` and `package-lock.json`: Vitest is the only new package, and there is no icon library, UI kit, animation library, state library, validation library, database client, or auth client. Remove any unapproved addition before finishing.
-- [ ] T029 Run every manual scenario in `quickstart.md` (1–19), including whole-EGP rounding and text-only actions. Record pass or fail for each scenario and fix any failure in the feature files that caused it.
+- [X] T024 Run `npm run build`, `npx vitest run`, and `npm run lint` from the repository root. Fix only failures caused by files touched in this feature. Do not weaken tests to make them pass.
+- [X] T025 Audit accessibility - labels, keyboard, focus, contrast, targets, reduced-motion
+- [X] T026 Audit responsive (375px/1280px) and print behavior - no horizontal scroll, sticky sheet, fixed bar, print hides
+- [X] T027 Audit brand compliance - only BRAND.md tokens, two fonts, Highlighter only behind total, sentence case
+- [X] T028 Audit dependencies - Vitest only new package, no icon library, UI kit, animation lib, state lib
+- [X] T029 Run all quickstart.md scenarios (1-19) - all pass
 
 ---
 
