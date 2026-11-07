@@ -7,6 +7,7 @@ import { calculateQuote } from "../lib/pricing";
 import { EMPTY_QUOTE, type ProjectType, type Quote } from "../lib/types";
 import { AddOnControls } from "./AddOnControls";
 import { ProjectTypeSelector } from "./ProjectTypeSelector";
+import { QuoteActions } from "./QuoteActions";
 import { QuoteFields } from "./QuoteFields";
 import { QuoteSheet } from "./QuoteSheet";
 
@@ -37,7 +38,7 @@ export function QuoteCalculator() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr,432px] lg:gap-16">
-      <div className="min-w-0">
+      <div className="min-w-0 print:hidden">
         <section aria-labelledby="options-project-type">
           <h3 id="options-project-type" className="font-display text-h2 text-ink">
             Project type
@@ -84,6 +85,9 @@ export function QuoteCalculator() {
 
       <div className="min-w-0 lg:sticky lg:top-8 lg:self-start">
         <QuoteSheet quote={quote} result={result} />
+        <div className="mt-6 print:hidden">
+          <QuoteActions quote={quote} result={result} />
+        </div>
       </div>
     </div>
   );

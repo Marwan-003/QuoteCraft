@@ -88,3 +88,25 @@ body {
 .total-fade {
   animation: total-fade 150ms ease-out;
 }
+
+/* Print: the client gets the quote sheet only. */
+@media print {
+  /* The fixed mobile total bar never prints, whatever the print width. */
+  [data-mobile-total-bar] {
+    display: none !important;
+  }
+
+  /* A long quote spans pages without losing the total. */
+  [data-testid="sheet-total-band"] {
+    break-inside: avoid;
+  }
+
+  header,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  body {
+    background: var(--color-sheet);
+  }
+}

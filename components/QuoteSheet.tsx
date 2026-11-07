@@ -89,10 +89,11 @@ export function QuoteSheet({
           </dl>
         )}
 
-        <div className="mt-6 border-t border-pencil">
+        <div className="mt-6 border-t border-pencil" data-testid="sheet-total-runner">
           {/* The one Highlighter band per screen: in-sheet on desktop and in
-              print, in the fixed bar on phone layouts. */}
-          <div className="hidden bg-highlighter mt-8 -ms-6 -me-6 px-6 py-4 items-baseline justify-between gap-4 lg:flex print:flex">
+              print, in the fixed bar on phone layouts. The bar also carries a
+              data attribute so the base print rule can hide it explicitly. */}
+          <div data-testid="sheet-total-band" className="hidden bg-highlighter mt-8 -ms-6 -me-6 px-6 py-4 items-baseline justify-between gap-4 lg:flex print:flex">
             <span className="text-label font-medium text-ink">Total</span>
             <span
               key={result.total}
@@ -111,6 +112,7 @@ export function QuoteSheet({
           hidden from assistive tech. */}
       <div
         aria-hidden="true"
+        data-mobile-total-bar=""
         className="print:hidden fixed inset-x-0 bottom-0 z-10 border-t border-pencil bg-sheet lg:hidden"
       >
         {bar}

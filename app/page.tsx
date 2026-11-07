@@ -3,7 +3,7 @@ import { QuoteCalculator } from "../components/QuoteCalculator";
 export default function Home() {
   return (
     <div className="mx-auto w-full max-w-quote px-4 pb-24 pt-8 sm:px-6 lg:px-8">
-      <header className="border-b border-pencil/60 pb-6">
+      <header className="border-b border-pencil/60 pb-6 print:hidden">
         <p className="font-display text-h3 text-lapis">QuoteCraft</p>
         <div className="mt-2 grid gap-2 lg:grid-cols-2 lg:items-end">
           <h1 className="font-display text-h1 text-ink">Build the quote</h1>
