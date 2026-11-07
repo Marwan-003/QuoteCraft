@@ -11,9 +11,6 @@
   --color-highlighter: #FFD84D;
   --color-red-pencil: #B3261E;
 
-  --font-display: var(--font-bricolage), system-ui, sans-serif;
-  --font-body: var(--font-plex), system-ui, sans-serif;
-
   --radius-control: 6px;
   --radius-sheet: 2px;
 
@@ -32,4 +29,45 @@
   --text-label--line-height: 1.4;
   --text-small: 14px;
   --text-small--line-height: 1.5;
+}
+
+/* Font family mappings resolve the next/font variables set on <html>. */
+@theme inline {
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-body: var(--font-plex), system-ui, sans-serif;
+}
+
+/*
+ * Spacing scale: Tailwind's default --spacing base (4px) yields the
+ * BRAND.md steps 4/8/16/24/32/48 (and 12px, which sits between the
+ * allowed steps; components use only the allowed steps).
+ */
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+/*
+ * Consistent focus everywhere: a 2px Lapis outline with 2px offset,
+ * on every interactive element (BRAND.md section 7).
+ */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-lapis);
+  outline-offset: 2px;
+}
+
+/* Motion only answers an action; reduced motion settings turn it off. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
