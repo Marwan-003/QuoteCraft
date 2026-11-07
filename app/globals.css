@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Brand tokens — see BRAND.md. Paper/Sheet/Ink/Graphite/Pencil/Lapis/Highlighter/Red pencil. */
+@theme {
+  --color-paper: #F5F6F2;
+  --color-sheet: #FFFFFF;
+  --color-ink: #1A2238;
+  --color-graphite: #4A5368;
+  --color-pencil: #6B7385;
+  --color-lapis: #274690;
+  --color-highlighter: #FFD84D;
+  --color-red-pencil: #B3261E;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-body: var(--font-plex), system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --radius-control: 6px;
+  --radius-sheet: 2px;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Named typography tokens — BRAND.md section 4 (scale ratio 1.25). */
+  --text-total: 49px;
+  --text-total--line-height: 1.1;
+  --text-h1: 39px;
+  --text-h1--line-height: 1.15;
+  --text-h2: 25px;
+  --text-h2--line-height: 1.25;
+  --text-h3: 20px;
+  --text-h3--line-height: 1.3;
+  --text-body: 16px;
+  --text-body--line-height: 1.6;
+  --text-label: 16px;
+  --text-label--line-height: 1.4;
+  --text-small: 14px;
+  --text-small--line-height: 1.5;
 }
